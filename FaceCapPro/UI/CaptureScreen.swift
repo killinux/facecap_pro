@@ -3,7 +3,7 @@ import SwiftUI
 struct CaptureScreen: View {
     @ObservedObject var viewModel: CaptureViewModel
     @AppStorage("showMesh") private var showMesh = true
-    @AppStorage("showEmotionPanel") private var showEmotionPanel = true
+    @AppStorage("showPanels") private var showPanels = true
     @State private var previewMode: PreviewMode = .camera
 
     enum PreviewMode: String, CaseIterable {
@@ -28,10 +28,10 @@ struct CaptureScreen: View {
 
                 Spacer()
 
-                if showEmotionPanel {
+                if showPanels {
                     EmotionPanel(scores: viewModel.emotionScores)
+                    BlendshapePanel(coefficients: viewModel.uiCoefficients)
                 }
-                BlendshapePanel(coefficients: viewModel.uiCoefficients)
                 recordBar
             }
             .padding()
@@ -106,10 +106,10 @@ struct CaptureScreen: View {
 
             Button {
                 withAnimation(.easeInOut(duration: 0.2)) {
-                    showEmotionPanel.toggle()
+                    showPanels.toggle()
                 }
             } label: {
-                Image(systemName: showEmotionPanel ? "theatermasks.fill" : "theatermasks")
+                Image(systemName: showPanels ? "theatermasks.fill" : "theatermasks")
                     .font(.caption)
                     .foregroundStyle(.white)
                     .padding(.horizontal, 10)
