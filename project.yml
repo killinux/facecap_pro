@@ -1,0 +1,29 @@
+name: FaceCapPro
+options:
+  bundleIdPrefix: com.facecappro
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+configs:
+  Debug: debug
+  Release: release
+targets:
+  FaceCapPro:
+    type: application
+    platform: iOS
+    sources:
+      - path: FaceCapPro
+        excludes:
+          - "Resources/**"
+          - "Info.plist"
+      - path: FaceCapPro/Resources
+        buildPhase: resources
+        optional: true
+    settings:
+      base:
+        INFOPLIST_FILE: FaceCapPro/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.facecappro.app
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_VERSION: "5.9"
+        CODE_SIGN_STYLE: Automatic
+        SUPPORTS_MACCATALYST: "NO"

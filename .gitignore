@@ -1,0 +1,16 @@
+# Xcode / 生成物（工程文件由 xcodegen 生成）
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+DerivedData/
+build/
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# MediaPipe 模型（由 setup.sh 下载，约 3.7MB）
+FaceCapPro/Resources/face_landmarker.task
+
+# 系统
+.DS_Store
